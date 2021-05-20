@@ -29,7 +29,8 @@ describe('Hobbits', () => {
   describe('getAll()', () => {
     it('resolves to list of hobbits', async () => {
       const hobbits = await Hobbit.getAll()
-      expect(hobbits).toEqual([])
+      expect(hobbits).toHaveLength(0)
+      db('hobbits')
     })
     it('does something', () => {
 
