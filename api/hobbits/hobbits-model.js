@@ -17,8 +17,9 @@ function getById(id) {
 }
 
 async function insert(hobbit) {
-  // the "returning array is great with PO"
-  const [id] = await db('hobbits').insert(hobbit, ['id', 'name'])
+  // the "returning array" is great with POSTGRES
+  const [id] = await db('hobbits')
+    .insert(hobbit, ['id', 'name'])
   return db('hobbits').where('id', id).first()
 }
 
