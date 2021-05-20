@@ -18,6 +18,7 @@ describe('[GET] /hobbits', () => {
     await db('hobbits').insert({ name: 'sam' }, { name: 'frodo' })
   })
   it('returns a list of hobbits', async () => {
-    const res = request(server).get('/')
+    const res = request(server).get('/hobbits')
+    const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
