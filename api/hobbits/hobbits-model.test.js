@@ -3,7 +3,10 @@ const Hobbit = require('./hobbits-model')
 // console.log(process.env.USER)
 // console.log(process.env.FOO)
 
-be
+beforeAll(async () => {})
+afterAll(async () => {})
+beforeEach(async () => {})
+afterEach(async () => {})
 
 describe('Hobbits', () => {
 
