@@ -37,10 +37,7 @@ describe('Hobbits', () => {
       hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(2)
     })
-    it('does something', () => {
-
-    })
-    it('does something', () => {
+    it('', () => {
 
     })
   })
