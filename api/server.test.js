@@ -14,5 +14,10 @@ afterAll(async () => {
 })
 
 describe('[GET] /hobbits', () => {
-  
+  beforeEach(async () => {
+    
+  })
+  it('returns a list of hobbits', async () => {
+
+  })
 })
