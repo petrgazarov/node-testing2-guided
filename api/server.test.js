@@ -2,6 +2,8 @@ const db = require('../data/dbConfig')
 const request = require('supertest')
 const server = require('./server')
 
+const listOfHobbits = [{ name: 'sam' }, { name: 'frodo' }]
+
 beforeAll(async () => {
   await db.migrate.rollback()
   await db.migrate.latest()
@@ -15,7 +17,7 @@ afterAll(async () => {
 
 describe('[GET] /hobbits', () => {
   beforeEach(async () => {
-    await db('hobbits').insert([{ name: 'sam' }, { name: 'frodo' }])
+    await db('hobbits').insert(])
   })
   it('responds with a 200 OK', async () => {
     const res = await request(server).get('/hobbits')
