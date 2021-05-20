@@ -15,11 +15,11 @@ afterAll(async () => {
 
 describe('[GET] /hobbits', () => {
   beforeEach(async () => {
-    await db('hobbits').insert({ name: 'sam' }, { name: 'frodo' })
+    await db('hobbits').insert([{ name: 'sam' }, { name: 'frodo' }])
   })
   it('returns a list of hobbits', async () => {
-    const res = request(server).get('/hobbits')
-    console.log(res)
+    const res = await request(server).get('/hobbits')
+    console.log(res.body)
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
