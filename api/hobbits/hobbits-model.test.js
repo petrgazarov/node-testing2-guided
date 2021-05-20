@@ -54,7 +54,7 @@ describe('Hobbits', () => {
 
     it('resolves to the inserted hobbit', async () => {
       const result = await Hobbit.insert({ name: "sam" })
-      expect(result)
+      expect(result).toMatchObject({ id: 1, name: 'sam' })
     })
   })
 })
