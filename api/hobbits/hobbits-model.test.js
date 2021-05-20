@@ -46,7 +46,8 @@ describe('Hobbits', () => {
 
   describe('insert()', () => {
     it('inserts hobbit', async () => {
-      expect(await Hobbit.insert({ name: "sam" })).toEqual(1)
+      await Hobbit.insert({ name: "sam" })
+      expect().toEqual(1)
     })
 
     it('resolves to the inserted hobbit', () => {
