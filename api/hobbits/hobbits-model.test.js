@@ -51,8 +51,8 @@ describe('Hobbits', () => {
       expect(hobbits).toHaveLength(1)
     })
 
-    it('resolves to the inserted hobbit', () => {
-
+    it('resolves to the inserted hobbit', async () => {
+      await Hobbit.insert({ name: "sam" })
     })
   })
 })
