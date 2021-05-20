@@ -18,6 +18,6 @@ describe('[GET] /hobbits', () => {
     await db('hobbits').insert({ name: 'sam' }, { name: 'frodo' })
   })
   it('returns a list of hobbits', async () => {
-
+    const res = request(server).get('/')
   })
 })
