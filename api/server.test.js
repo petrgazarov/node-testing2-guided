@@ -12,7 +12,7 @@ beforeEach(async () => {
   await db('hobbits').truncate()
 })
 afterAll(async () => {
-  await db.destroy()
+  // await db.destroy() 
 })
 
 describe('[GET] /hobbits', () => {
