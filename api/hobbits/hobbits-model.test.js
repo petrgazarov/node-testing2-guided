@@ -27,12 +27,15 @@ describe('Hobbits', () => {
   })
 
   describe('getAll()', () => {
-    beforeEach(async () => {
-      await db('hobbits').insert({ name: 'sam' })
-    })
     it('resolves to list of hobbits', async () => {
       let hobbits = await Hobbit.getAll()
+      expect(hobbits).toHaveLength(0)
+      await db('hobbits').insert({ name: 'sam' })
+      hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(1)
+      await db('hobbits').insert({ name: 'pippin' })
+      hobbits = await Hobbit.getAll()
+      expect(hobbits).toHaveLength(2)
     })
     it('does something', () => {
 
