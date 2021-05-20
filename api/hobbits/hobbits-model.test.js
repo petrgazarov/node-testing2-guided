@@ -37,8 +37,8 @@ describe('Hobbits', () => {
       hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(2)
     })
-    it('', () => {
-
+    it('resolves to hobbits of the correct shape', () => {
+      
     })
   })
 })
