@@ -15,7 +15,7 @@ afterAll(async () => {
 
 describe('[GET] /hobbits', () => {
   beforeEach(async () => {
-    
+    await db('hobbits').insert({ name: 'sam' }, { name: 'frodo' })
   })
   it('returns a list of hobbits', async () => {
 
