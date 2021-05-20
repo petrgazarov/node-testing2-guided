@@ -8,8 +8,8 @@ beforeAll(async () => {
   await db.migrate.rollback()
   await db.migrate.latest()
 })
-beforeEach(() => {
-  
+beforeEach(async () => {
+  await db('hobbits').truncate()
 })
 afterAll(() => {
   // here
