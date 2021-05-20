@@ -17,16 +17,15 @@ describe('[GET] /hobbits', () => {
   beforeEach(async () => {
     await db('hobbits').insert([{ name: 'sam' }, { name: 'frodo' }])
   })
-  it('responds with a 200 OK', () => {
-
+  it('responds with a 200 OK', async () => {
+    const res = await request(server).get('/hobbits')
+    expect(res.status).toBe(200)
   })
   it('returns a list of hobbits', async () => {
     const res = await request(server).get('/hobbits')
     console.log(res.body)
     console.log(res.status)
     console.log(res.headers)
-
-    expect(res.status).toBe(200)
     expect(res.body).toMatchObject([{ name: 'sam' }, { name: 'frodo' }])
     expect(res.body[0]).toMatchObject({ name: 'sam' })
     expect(res.body[0]).toHaveProperty('name', 'sam')
