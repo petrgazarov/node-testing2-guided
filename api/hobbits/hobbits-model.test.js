@@ -49,6 +49,7 @@ describe('Hobbits', () => {
       await Hobbit.insert({ name: "sam" })
       const hobbits = await db('hobbits')
       expect(hobbits).toHaveLength(1)
+      expect(hobbits[0]).toMatchObject({ name: "sam" })
     })
 
     it('resolves to the inserted hobbit', async () => {
