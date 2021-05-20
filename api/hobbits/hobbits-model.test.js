@@ -25,4 +25,16 @@ describe('Hobbits', () => {
       expect(process.env.DB_ENV).toBe('testing')
     })
   })
+
+  describe('getAll()', () => {
+    it('does something', () => {
+
+    })
+    it('does something', () => {
+
+    })
+    it('does something', () => {
+
+    })
+  })
 })
