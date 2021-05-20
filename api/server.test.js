@@ -17,7 +17,7 @@ afterAll(async () => {
 
 describe('[GET] /hobbits', () => {
   beforeEach(async () => {
-    await db('hobbits').insert(])
+    await db('hobbits').insert(listOfHobbits)
   })
   it('responds with a 200 OK', async () => {
     const res = await request(server).get('/hobbits')
@@ -28,7 +28,7 @@ describe('[GET] /hobbits', () => {
     console.log(res.body)
     console.log(res.status)
     console.log(res.headers)
-    expect(res.body).toMatchObject([{ name: 'sam' }, { name: 'frodo' }])
+    expect(res.body).toMatchObject(listOfHobbits)
     expect(res.body[0]).toMatchObject({ name: 'sam' })
     expect(res.body[0]).toHaveProperty('name', 'sam')
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
