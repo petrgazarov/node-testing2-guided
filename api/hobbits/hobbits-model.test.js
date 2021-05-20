@@ -11,11 +11,8 @@ beforeAll(async () => {
 beforeEach(async () => {
   await db('hobbits').truncate()
 })
-afterAll(() => {
-  // here
-})
-afterEach(() => {
-  // here
+afterAll(async () => {
+  await db.destroy()
 })
 
 describe('Hobbits', () => {
