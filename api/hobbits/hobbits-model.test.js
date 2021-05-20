@@ -53,7 +53,8 @@ describe('Hobbits', () => {
     })
 
     it('resolves to the inserted hobbit', async () => {
-      await Hobbit.insert({ name: "sam" })
+      const result = await Hobbit.insert({ name: "sam" })
+      expect(result)
     })
   })
 })
