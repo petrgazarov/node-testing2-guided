@@ -37,8 +37,9 @@ describe('Hobbits', () => {
       hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(2)
     })
-    it('resolves to hobbits of the correct shape', () => {
-      
+    it('resolves to hobbits of the correct shape', async () => {
+      await db('hobbits').insert({ name: 'sam' })
+      hobbits = await Hobbit.getAll()
     })
   })
 })
