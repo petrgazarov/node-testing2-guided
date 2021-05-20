@@ -39,7 +39,8 @@ describe('Hobbits', () => {
     })
     it('resolves to hobbits of the correct shape', async () => {
       await db('hobbits').insert({ name: 'sam' })
-      hobbits = await Hobbit.getAll()
+      let hobbits = await Hobbit.getAll()
+      expect(hobbits).
     })
   })
 })
