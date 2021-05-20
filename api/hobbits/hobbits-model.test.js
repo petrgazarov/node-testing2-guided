@@ -6,6 +6,9 @@ describe('Hobbits', () => {
 
     test('Hobbit is defined', () => {
       expect(Hobbit).toBeDefined()
+    })
+
+    test('Hobbit is defined', () => {
       expect(process.env.NODE_ENV).toBe('testing')
     })
   })
