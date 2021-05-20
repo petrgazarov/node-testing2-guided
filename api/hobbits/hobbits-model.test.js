@@ -29,7 +29,7 @@ describe('Hobbits', () => {
   describe('getAll()', () => {
     it('resolves to list of hobbits', async () => {
       const hobbits = await Hobbit.getAll()
-      
+      expect(hobbits).toEqual([])
     })
     it('does something', () => {
 
