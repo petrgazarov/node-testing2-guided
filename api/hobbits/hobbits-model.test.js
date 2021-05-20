@@ -7,13 +7,13 @@ const db = require('../../data/dbConfig')
 beforeAll(async () => {
   await db.migrate.latest()
 })
-afterAll(async () => {
+afterAll(() => {
   // here
 })
-beforeEach(async () => {
+beforeEach(() => {
   // here
 })
-afterEach(async () => {
+afterEach(() => {
   // here
 })
 
