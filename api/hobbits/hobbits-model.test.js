@@ -28,7 +28,8 @@ describe('Hobbits', () => {
 
   describe('getAll()', () => {
     it('resolves to list of hobbits', async () => {
-      await Hobbit.getAll()
+      const hobbits = await Hobbit.getAll()
+      
     })
     it('does something', () => {
 
