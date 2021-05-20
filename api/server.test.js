@@ -25,6 +25,7 @@ describe('[GET] /hobbits', () => {
 
     expect(res.status).toBe(200)
     expect(res.body).toMatchObject([{ name: 'sam' }, { name: 'frodo' }])
+    expect(res.body[0]).toMatchObject({ name: 'sam' })
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
