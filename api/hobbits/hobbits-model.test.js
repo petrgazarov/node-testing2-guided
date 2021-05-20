@@ -27,8 +27,8 @@ describe('Hobbits', () => {
   })
 
   describe('getAll()', () => {
-    it('does something', () => {
-
+    it('resolves to list of hobbits', async () => {
+      await Hobbit.getAll()
     })
     it('does something', () => {
 
