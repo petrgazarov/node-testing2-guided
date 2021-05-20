@@ -5,6 +5,7 @@ const db = require('../../data/dbConfig')
 // console.log(process.env.FOO)
 
 beforeAll(async () => {
+  await db.migrate.rollback()
   await db.migrate.latest()
 })
 afterAll(() => {
