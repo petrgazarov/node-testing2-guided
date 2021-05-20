@@ -17,7 +17,7 @@ function getById(id) {
 }
 
 async function insert(hobbit) {
-  return null
+  db('hobbits').insert(hobbit)
 }
 
 async function update(id, changes) {
