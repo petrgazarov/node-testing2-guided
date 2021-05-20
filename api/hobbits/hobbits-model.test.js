@@ -4,8 +4,6 @@ describe('Hobbits', () => {
 
   describe('sanity', () => {
 
-    test('Hobbit is defined', () => {
-      expect(Hobbit).toBeDefined()
-    })
+    test.todo('Hobbit is defined')
   })
 })
