@@ -31,6 +31,8 @@ describe('[GET] /hobbits', () => {
     expect(res.body).toMatchObject(listOfHobbits)
     expect(res.body[0]).toMatchObject({ name: 'sam' })
     expect(res.body[0]).toHaveProperty('name', 'sam')
+
+    expect(res.body).toMatchSnapshot()
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
