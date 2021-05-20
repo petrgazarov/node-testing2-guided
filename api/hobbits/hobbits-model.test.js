@@ -44,5 +44,13 @@ describe('Hobbits', () => {
     })
   })
 
-  describe('insert()')
+  describe('insert()', () => {
+    it('inserts hobbit', () => {
+
+    })
+
+    it('resolves to the inserted hobbits', () => {
+      
+    })
+  })
 })
