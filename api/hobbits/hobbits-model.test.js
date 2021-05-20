@@ -1,10 +1,11 @@
 const Hobbit = require('./hobbits-model')
+const db = require('../../data/dbConfig')
 
 // console.log(process.env.USER)
 // console.log(process.env.FOO)
 
 beforeAll(async () => {
-  
+  await db.migrate.latest()
 })
 afterAll(async () => {
   // here
