@@ -40,7 +40,7 @@ describe('Hobbits', () => {
     it('resolves to hobbits of the correct shape', async () => {
       await db('hobbits').insert({ name: 'sam' })
       let hobbits = await Hobbit.getAll()
-      expect(hobbits).
+      expect(hobbits).toMatchObject([{ name: 'sam' }])
     })
   })
 })
