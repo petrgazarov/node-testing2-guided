@@ -43,4 +43,6 @@ describe('Hobbits', () => {
       expect(hobbits).toMatchObject([{ name: 'sam' }])
     })
   })
+
+  describe('insert()')
 })
