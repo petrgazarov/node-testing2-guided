@@ -5,11 +5,11 @@ const server = require('./server')
 const listOfHobbits = [{ name: 'sam' }, { name: 'frodo' }]
 
 beforeAll(async () => {
-  await db.migrate.rollback()
-  await db.migrate.latest()
+  await db.migrate.rollback() // takes back the db to the stone age
+  await db.migrate.latest() // bringing to the latest
 })
 beforeEach(async () => {
-  await db('hobbits').truncate()
+  await db('hobbits').truncate() // wipes rows, and resets id numbers
 })
 afterAll(async () => {
   await db.destroy()
