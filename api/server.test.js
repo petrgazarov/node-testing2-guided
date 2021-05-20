@@ -19,6 +19,7 @@ describe('[GET] /hobbits', () => {
   })
   it('returns a list of hobbits', async () => {
     const res = request(server).get('/hobbits')
-    const res = request(server).post('/hobbits').send({ name: 'pippin' })
+    
+    // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
