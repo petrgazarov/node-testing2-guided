@@ -26,7 +26,7 @@ describe('Hobbits', () => {
     })
   })
 
-  describe('getAll() insert()', () => {
+  describe('getAll()', () => {
     it('resolves to list of hobbits', async () => {
       const hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(0)
