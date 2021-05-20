@@ -22,6 +22,9 @@ describe('[GET] /hobbits', () => {
     console.log(res.body)
     console.log(res.status)
     console.log(res.headers)
+
+    expect(res.status).toBe(200)
+    expect(res.body).toEqu
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
