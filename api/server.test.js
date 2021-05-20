@@ -12,14 +12,14 @@ beforeEach(async () => {
 afterAll(async () => {
   await db.destroy()
 })
-
+  
 describe('[GET] /hobbits', () => {
   beforeEach(async () => {
     await db('hobbits').insert({ name: 'sam' }, { name: 'frodo' })
   })
   it('returns a list of hobbits', async () => {
     const res = request(server).get('/hobbits')
-    console.log(res)
+
     // const res = request(server).post('/hobbits').send({ name: 'pippin' })
   })
 })
