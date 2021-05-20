@@ -28,8 +28,9 @@ describe('Hobbits', () => {
 
   describe('getAll()', () => {
     it('resolves to list of hobbits', async () => {
-      const hobbits = await Hobbit.getAll()
+      let hobbits = await Hobbit.getAll()
       expect(hobbits).toHaveLength(0)
+      hobbits = await Hobbit.getAll()
       await db('hobbits').insert({ name: 'sam' })
       expect(hobbits).toHaveLength(1)
     })
