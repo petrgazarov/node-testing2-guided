@@ -47,7 +47,8 @@ describe('Hobbits', () => {
   describe('insert()', () => {
     it('inserts hobbit', async () => {
       await Hobbit.insert({ name: "sam" })
-      expect(await db('hobbits')).toHaveLength(1)
+      const hobbits = await db('hobbits')
+      expect(hobbits).toHaveLength(1)
     })
 
     it('resolves to the inserted hobbit', () => {
