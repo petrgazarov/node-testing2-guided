@@ -14,6 +14,10 @@ describe('Hobbit model', () => {
     await db('hobbits').truncate();
   });
 
+  afterAll(async () => {
+    await db.destroy();
+  });
+
   describe('getAll()', () => {
     it('returns an empty array when there are no hobbits', async () => {
       const hobbits = await Hobbit.getAll();
