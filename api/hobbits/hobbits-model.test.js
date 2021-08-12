@@ -20,6 +20,19 @@ describe('Hobbit model', () => {
 
       expect(hobbits).toEqual([]);
     });
+
+    it('returns an array of hobbits when they exist', async () => {
+      await db.seed.run();
+
+      const hobbits = await Hobbit.getAll();
+
+      expect(hobbits.length).toBe(4);
+
+      hobbits.forEach(hobbit => {
+        expect(hobbit).toHaveProperty('id');
+        expect(hobbit).toHaveProperty('name');
+      });
+    });
   });
 
   describe('insert()', () => {
@@ -30,7 +43,7 @@ describe('Hobbit model', () => {
     });
   });
 
-  describe('getById', () => {
+  describe('getById()', () => {
     it('returns the hobbit if it exists', async () => {
       const { id } = await Hobbit.insert({ name: 'Frodo' });
 
@@ -39,8 +52,26 @@ describe('Hobbit model', () => {
       expect(hobbit).toMatchObject({ name: 'Frodo' });
     });
 
-    it.skip("returns undefined when the hobbit doesn't exist", () => {
+    it("returns undefined when the hobbit doesn't exist", async () => {
+      const result = await Hobbit.getById('12345');
 
+      expect(result).toBeUndefined();
     });
+  });
+
+  describe('update()', () => {
+    it('updates an existing record', async () => {
+      const { id } = await Hobbit.insert({ name: 'Frodo' });
+      
+      await Hobbit.update(id, { name: 'Frodo 1' });
+      
+      const hobbit = await Hobbit.getById(id);
+
+      expect(hobbit).toMatchObject({ name: 'Frodo 1' });
+    });
+  });
+
+  describe('remove()', () => {
+
   });
 });
