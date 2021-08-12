@@ -6,6 +6,7 @@
     "start": "node index.js",
     "migrate": "knex migrate:latest",
     "seed": "knex seed:run",
+    "test": "jest --watch",
     "ketchup": "git fetch && git reset --hard origin/lecture"
   },
   "dependencies": {
@@ -16,7 +17,9 @@
   },
   "devDependencies": {
     "eslint": "^7.31.0",
-    "nodemon": "^2.0.12"
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.5"
   },
   "repository": {
     "type": "git",
