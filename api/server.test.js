@@ -1,6 +1,7 @@
 const request = require('supertest');
 const server = require('./server');
 const db = require('../data/dbConfig');
+const Hobbit = require('./hobbits/hobbits-model');
 
 describe('server.js', () => {
   beforeAll(async () => {
@@ -45,12 +46,18 @@ describe('server.js', () => {
   });
 
   describe('[GET] /hobbits/:id', () => {
-    it.skip('returns a hobbit when it exists', () => {
+    it('returns a hobbit when it exists', async () => {
+      const { id } = await Hobbit.insert({ name: 'Frodo' });
 
+      const res = await request(server).get(`/hobbits/${id}`);
+
+      expect(res.body).toMatchObject({ name: 'Frodo' });
     });
 
-    it.skip("returns a 404 when the hobbit doesn't exist", () => {
-    
+    it("returns a 404 when the hobbit doesn't exist", () => {
+      return request(server)
+        .get('/hobbits/12345')
+        .expect(404, { message: 'Hobbit not found' });
     });
   });
 

@@ -1,6 +1,6 @@
 const express = require("express");
 
-const Hobbits = require("./hobbits/hobbits-model.js");
+const Hobbit = require("./hobbits/hobbits-model.js");
 
 const server = express();
 
@@ -11,7 +11,7 @@ server.get("/", (req, res) => {
 });
 
 server.get("/hobbits", (req, res) => {
-  Hobbits.getAll()
+  Hobbit.getAll()
     .then(hobbits => {
       res.status(200).json(hobbits);
     })
@@ -20,8 +20,18 @@ server.get("/hobbits", (req, res) => {
     });
 });
 
-server.get("/hobbits/id", (req, res) => {
-  res.end()
+server.get("/hobbits/:id", (req, res) => {
+  Hobbit.getById(req.params.id)
+    .then(hobbit => {
+      if (hobbit) {
+        res.json(hobbit);
+      } else {
+        res.status(404).json({ message: 'Hobbit not found' });
+      }
+    })
+    .catch(error => {
+      res.status(500).json(error);
+    });
 });
 
 server.post("/hobbits", (req, res) => {
