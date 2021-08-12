@@ -16,12 +16,31 @@ describe('server.js', () => {
     await db.destroy();
   });
 
+  test('Proper database env variable is set', () => {
+    expect(process.env.DB_ENV).toEqual('testing');
+  });
+
   describe('[GET] /', () => {
     it('returns in valid response', () => {
       return request(server)
         .get('/')
         .expect('Content-Type', /application\/json/)
         .expect(200, { api: 'up' });
+    });
+  });
+
+  describe('[GET] /hobbits', () => {
+    it('returns an array of hobbits', async () => {
+      await db.seed.run();
+
+      const res = await request(server).get('/hobbits');
+
+      expect(res.body).toHaveLength(4);
+      
+      res.body.forEach(hobbit => {
+        expect(hobbit).toHaveProperty('id');
+        expect(hobbit).toHaveProperty('name');
+      });
     });
   });
 });
