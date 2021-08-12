@@ -2,18 +2,30 @@ const db = require('../../data/dbConfig');
 const Hobbit = require('./hobbits-model');
 
 describe('Hobbit model', () => {
-  // 1. Before all the tests, migrate if necessary
-  // 2. Before each test, clean up all records from db
-
+  //----------------------------------------------------------------------------//
+  // jest.beforeAll() specifies a method that is executed once before the entire
+  // test suite. You would use this to do any setup or initialization needed
+  // before running the tests, but that also only need to be run once (as opposed
+  // to before each test case).
+  //----------------------------------------------------------------------------//
   beforeAll(async () => {
     await db.migrate.rollback();
     await db.migrate.latest();
   });
 
+  //----------------------------------------------------------------------------//
+  // jest.beforeEach() specifies a method that is executed before each test. You
+  // would use this to do any setup or initialization needed before *every*
+  // test.
+  //----------------------------------------------------------------------------//
   beforeEach(async () => {
     await db('hobbits').truncate();
   });
 
+  //----------------------------------------------------------------------------//
+  // Similar to jest.beforeEach() and jest.beforeAll(), jest also has their
+  // equivalents that run *after* test cases: jest.afterEach() and jest.afterAll().
+  //----------------------------------------------------------------------------//
   afterAll(async () => {
     await db.destroy();
   });
