@@ -72,6 +72,12 @@ describe('Hobbit model', () => {
   });
 
   describe('remove()', () => {
+    it('removes the hobbit', async () => {
+      const { id } = await Hobbit.insert({ name: 'Frodo' });
 
+      await Hobbit.remove(id);
+
+      expect(await Hobbit.getById(id)).toBeUndefined();
+    });
   });
 });
