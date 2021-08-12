@@ -10,6 +10,10 @@ describe('Hobbit model', () => {
     await db.migrate.latest();
   });
 
+  beforeEach(async () => {
+    await db('hobbits').truncate();
+  });
+
   describe('getAll()', () => {
     it('returns an empty array when there are no hobbits', async () => {
       const hobbits = await Hobbit.getAll();
@@ -23,6 +27,20 @@ describe('Hobbit model', () => {
       const hobbit = await Hobbit.insert({ name: 'Frodo' });
 
       expect(hobbit).toMatchObject({ name: 'Frodo' });
+    });
+  });
+
+  describe('getById', () => {
+    it('returns the hobbit if it exists', async () => {
+      const { id } = await Hobbit.insert({ name: 'Frodo' });
+
+      const hobbit = await Hobbit.getById(id);
+
+      expect(hobbit).toMatchObject({ name: 'Frodo' });
+    });
+
+    it.skip("returns undefined when the hobbit doesn't exist", () => {
+
     });
   });
 });
