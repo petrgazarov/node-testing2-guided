@@ -43,4 +43,40 @@ describe('server.js', () => {
       });
     });
   });
+
+  describe('[GET] /hobbits/:id', () => {
+    it.skip('returns a hobbit when it exists', () => {
+
+    });
+
+    it.skip("returns a 404 when the hobbit doesn't exist", () => {
+    
+    });
+  });
+
+  describe('[POST] /hobbits', () => {
+    it.skip('creates a hobbit and returns it', () => {
+
+    });
+  });
+
+  describe('[PUT] /hobbits/:id', () => {
+    it.skip('updates the hobbit when it exists', () => {
+
+    });
+
+    it.skip("returns a 404 when the hobbit doesn't exist", () => {
+
+    });
+  });
+
+  describe('[DELETE] /hobbits/:id', () => {
+    it.skip('deletes the hobbit when it exists', () => {
+
+    });
+
+    it.skip("returns a 404 when the hobbit doesn't exist", () => {
+
+    });
+  });
 });
