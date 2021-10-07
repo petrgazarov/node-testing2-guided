@@ -29,4 +29,15 @@ describe('server.js', () => {
       return request(server).get('/hobbits/123').expect(404);
     });
   });
+
+  describe('[POST] /hobbits', () => {
+    it('returns the new hobbit', async () => {
+      const res = await request(server)
+        .post('/hobbits')
+        .send({ name: 'Frodo 2' })
+        .expect(201);
+
+      expect(res.body).toMatchObject({ name: 'Frodo 2' });
+    });
+  });
 });

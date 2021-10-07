@@ -35,8 +35,13 @@ server.get("/hobbits/:id", (req, res, next) => {
     .catch(next);
 });
 
-server.post("/hobbits", (req, res) => {
-  res.end()
+server.post("/hobbits", (req, res, next) => {
+  Hobbits
+    .insert(req.body)
+    .then(hobbit => {
+      res.status(201).json(hobbit);
+    })
+    .catch(next);
 });
 
 server.delete("/hobbits/:id", (req, res) => {
