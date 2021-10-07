@@ -20,8 +20,19 @@ server.get("/hobbits", (req, res) => {
     });
 });
 
-server.get("/hobbits/id", (req, res) => {
-  res.end()
+server.get("/hobbits/:id", (req, res, next) => {
+  const { id } = req.params;
+
+  Hobbits
+    .getById(id)
+    .then(hobbit => {
+      if (hobbit) {
+        res.json(hobbit);
+      } else {
+        res.status(404).json({ message: 'Hobbit not found' });
+      }
+    })
+    .catch(next);
 });
 
 server.post("/hobbits", (req, res) => {
