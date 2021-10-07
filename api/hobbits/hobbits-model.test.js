@@ -2,10 +2,6 @@ const Hobbit = require('./hobbits-model');
 const db = require('../../data/dbConfig');
 
 describe('Hobbit model', () => {
-  // 1. migrate
-  // 2. seed
-  // 3. cleanup after test
-
   beforeAll(async () => {
     await db.migrate.rollback();
     await db.migrate.latest();
@@ -13,6 +9,10 @@ describe('Hobbit model', () => {
 
   beforeEach(async () => {
     await db.seed.run();
+  });
+
+  afterAll(async () => {
+    await db.destroy();
   });
 
   describe('getById()', () => {
@@ -34,6 +34,7 @@ describe('Hobbit model', () => {
       const hobbit = await Hobbit.insert({ name: 'Frodo 2' });
 
       expect(hobbit).toMatchObject({ name: 'Frodo 2' });
+      expect(await db('hobbits')).toHaveLength(5);
     });
   });
 });
