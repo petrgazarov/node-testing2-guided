@@ -1,12 +1,25 @@
 const Hobbit = require('./hobbits-model');
+const db = require('../../data/dbConfig');
 
 describe('Hobbit model', () => {
-  // describe for each method
-  // each describe will have 1 or more tests
+  // 1. migrate
+  // 2. seed
+  // 3. cleanup after test
+
+  beforeAll(async () => {
+    await db.migrate.rollback();
+    await db.migrate.latest();
+  });
+
+  beforeEach(async () => {
+    await db.seed.run();
+  });
 
   describe('getById()', () => {
-    it('retrives hobbit by it', () => {
+    it('retrives hobbit by id', async () => {
+      const hobbit = await Hobbit.getById(1);
 
+      expect(hobbit).toMatchObject({ name: 'sam' });
     });
   });
 });
