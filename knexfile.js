@@ -22,7 +22,7 @@ const common = {
 // exports, and call it with a configuration object. We can use a string as an
 // index into this object: config['testing'] for example.
 //
-// In this project, we are using an environment variable, DB_ENV, to specify
+// In this project, we are using NODE_ENV environment variable to specify
 // which environment in knex we want to use. We could set that environment
 // variable a variety of ways, including using the .env file. Or, we can use
 // a script definition in package.json to set the environment variable.
@@ -30,7 +30,7 @@ const common = {
 // See package.json: we are using a package called "cross-env", which allows
 // you to set environment variables using a common syntax, regardless of what
 // operating system you are on, or what shell you are using. In our example,
-// there, we are setting DB_ENV to "testing" using cross-env in the "test"
+// there, we are setting NODE_ENV to "testing" using cross-env in the "test"
 // script. This causes us to use the "testing" object below when knex is
 // configured in ./data/dbConfig.js.
 //----------------------------------------------------------------------------//
