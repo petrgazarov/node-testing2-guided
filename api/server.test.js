@@ -17,10 +17,16 @@ describe('server.js', () => {
   });
 
   describe('[GET] /hobbits/:id', () => {
-    it('returns the hobbit', async () => {
+    // Happy path
+    it('returns the hobbit if it exists', async () => {
       const res = await request(server).get('/hobbits/1').expect(200);
 
       expect(res.body).toMatchObject({ name: 'sam' });
+    });
+
+    // Sad path
+    it('returns 404 if the hobbit does not exist', () => {
+      return request(server).get('/hobbits/123').expect(404);
     });
   });
 });
