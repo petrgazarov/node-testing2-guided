@@ -23,9 +23,11 @@ async function insert(hobbit) {
 }
 
 async function update(id, changes) {
-  return null
+  await db('hobbits').where({ id }).update(changes);
+
+  return getById(id);
 }
 
 function remove(id) {
-  return null
+  return db('hobbits').where({ id }).del();
 }

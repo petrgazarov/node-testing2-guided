@@ -1,6 +1,19 @@
 const express = require("express");
 
-const Hobbits = require("./hobbits/hobbits-model.js");
+const Hobbit = require("./hobbits/hobbits-model.js");
+
+//----------------------------------------------------------------------------//
+// Note that we are not "server.listen()"ing in this file. This is important,
+// because the jest test files that we will define need to be able to get an
+// instance of express with our defined/configured middleware and handlers, that
+// is not listening on a port. If multiple tests tried to run using the same
+// port, only the first one would be able to run and start listening.
+//
+// We use supertest in our test files to get a copy of the instance of express
+// server that is exported from this file. Supertest automatically starts
+// our express server on an "ephemeral" port
+// (see https://en.wikipedia.org/wiki/Ephemeral_port).
+//----------------------------------------------------------------------------//
 
 const server = express();
 
@@ -11,7 +24,7 @@ server.get("/", (req, res) => {
 });
 
 server.get("/hobbits", (req, res) => {
-  Hobbits.getAll()
+  Hobbit.getAll()
     .then(hobbits => {
       res.status(200).json(hobbits);
     })
@@ -23,7 +36,7 @@ server.get("/hobbits", (req, res) => {
 server.get("/hobbits/:id", (req, res, next) => {
   const { id } = req.params;
 
-  Hobbits
+  Hobbit
     .getById(id)
     .then(hobbit => {
       if (hobbit) {
@@ -36,7 +49,7 @@ server.get("/hobbits/:id", (req, res, next) => {
 });
 
 server.post("/hobbits", (req, res, next) => {
-  Hobbits
+  Hobbit
     .insert(req.body)
     .then(hobbit => {
       res.status(201).json(hobbit);
@@ -44,12 +57,28 @@ server.post("/hobbits", (req, res, next) => {
     .catch(next);
 });
 
-server.delete("/hobbits/:id", (req, res) => {
-  res.end()
+server.delete("/hobbits/:id", (req, res, next) => {
+  Hobbit.remove(req.params.id)
+    .then(result => {
+      if (result) {
+        res.sendStatus(204);
+      } else {
+        res.status(404).send({ message: 'Hobbit not found' });
+      }
+    })
+    .catch(next);
 });
 
-server.put("/hobbits/:id", (req, res) => {
-  res.end()
+server.put("/hobbits/:id", (req, res, next) => {
+  Hobbit.update(req.params.id, req.body)
+    .then(hobbit => {
+      if (hobbit) {
+        res.json(hobbit);
+      } else {
+        res.status(404).send({ message: 'Hobbit not found' });
+      }
+    })
+    .catch(next);
 });
 
 module.exports = server;
